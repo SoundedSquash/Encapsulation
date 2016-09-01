@@ -23,7 +23,7 @@ public class Employee {
     private String cubeId;
     private final Date currentDate;
 
-    private Employee() {
+    public Employee() {
         currentDate = new Date();
     }
 
