@@ -28,7 +28,7 @@ public class Employee {
     }
 
     // Assume this must be performed first
-    public void meetWithHrForBenefitAndSalryInfo() {
+    private void meetWithHrForBenefitAndSalryInfo() {
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(currentDate);
         System.out.println("Met with Hr on " + fmtDate);
@@ -36,7 +36,7 @@ public class Employee {
     }
 
     // Assume this is must be performed second
-    public void meetDepartmentStaff() {
+    private void meetDepartmentStaff() {
         if(metWithHr) {
             SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
             String fmtDate = sdf.format(currentDate);
@@ -49,7 +49,7 @@ public class Employee {
     }
 
     // Assume this must be performed third
-    public void reviewDeptPolicies() {
+    private void reviewDeptPolicies() {
         if(metWithHr && metDeptStaff) {
             SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
             String fmtDate = sdf.format(currentDate);
@@ -63,7 +63,7 @@ public class Employee {
     }
 
     // Assume this must be performed 4th
-    public void moveIntoCubicle(String cubeId) {
+    private void moveIntoCubicle(String cubeId) {
         if(metWithHr && metDeptStaff && reviewedDeptPolicies) {
             SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
             String fmtDate = sdf.format(currentDate);
@@ -80,6 +80,12 @@ public class Employee {
     }
 
     public String getStatus() {
+        
+        meetWithHrForBenefitAndSalryInfo();
+        meetDepartmentStaff();
+        reviewDeptPolicies();
+        moveIntoCubicle(cubeId);
+        
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(currentDate);
 
