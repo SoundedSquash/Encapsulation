@@ -92,10 +92,12 @@ private String firstName;
         }
     }
 
+    //Lots of unnecessary getters and setters.
     public String getFirstName() {
         return firstName;
     }
-
+    
+    //Not needed. Name should be final.
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -103,7 +105,8 @@ private String firstName;
     public String getLastName() {
         return lastName;
     }
-
+    
+    //Not needed. Name should be final.
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -112,6 +115,7 @@ private String firstName;
         return ssn;
     }
 
+    //Not needed. SSN never changes.
     public void setSsn(String ssn) {
         this.ssn = ssn;
     }
@@ -120,6 +124,7 @@ private String firstName;
         return birthDate;
     }
 
+    //Not needed. Never changes.
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
@@ -128,6 +133,7 @@ private String firstName;
         return metWithHr;
     }
 
+    //Not needed. Only should change from method.
     public void setMetWithHr(boolean metWithHr) {
         this.metWithHr = metWithHr;
     }
@@ -136,6 +142,7 @@ private String firstName;
         return metDeptStaff;
     }
 
+    //Not needed. Only should change from method.
     public void setMetDeptStaff(boolean metDeptStaff) {
         this.metDeptStaff = metDeptStaff;
     }
@@ -144,6 +151,7 @@ private String firstName;
         return reviewedDeptPolicies;
     }
 
+    //Not needed. Only should change from method.
     public void setReviewedDeptPolicies(boolean reviewedDeptPolicies) {
         this.reviewedDeptPolicies = reviewedDeptPolicies;
     }
@@ -152,6 +160,7 @@ private String firstName;
         return movedIn;
     }
 
+    //Not needed. Only should change from method.
     public void setMovedIn(boolean movedIn) {
         this.movedIn = movedIn;
     }
