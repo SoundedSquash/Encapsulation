@@ -16,10 +16,10 @@ public class Employee {
     private String lastName;
     private String ssn;
     private Date birthDate;
-    private boolean metWithHr;
-    private boolean metDeptStaff;
-    private boolean reviewedDeptPolicies;
-    private boolean movedIn;
+    private boolean metWithHr = false;
+    private boolean metDeptStaff = false;
+    private boolean reviewedDeptPolicies = false;
+    private boolean movedIn = false;
     private String cubeId;
     private final Date currentDate;
 
