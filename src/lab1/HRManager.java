@@ -21,56 +21,53 @@ public class HRManager {
     }
     
     // Assume this must be performed first
-    public boolean meetWithHrForBenefitAndSalryInfo(Date currentDate) {
+    public void meetWithHrForBenefitAndSalryInfo(Date currentDate) {
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(currentDate);
         System.out.println("Met with Hr on " + fmtDate);
-        return true;
+        e.setMetWithHr(true);
     }
 
     // Assume this is must be performed second
-    public boolean meetDepartmentStaff(Date currentDate, boolean metWithHr) {
+    public void meetDepartmentStaff(Date currentDate, boolean metWithHr) {
         if(metWithHr) {
             SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
             String fmtDate = sdf.format(currentDate);
             System.out.println("Met with Dept. Staff on " + fmtDate);
-            return true;
+            e.setMetDeptStaff(true);
         } else {
             System.out.println("Sorry, you cannot meet with "
                     + "department staff until you have met with HR.");
-            return false;
         }
     }
 
     // Assume this must be performed third
-    public boolean reviewDeptPolicies(Date currentDate, boolean metDeptStaff) {
+    public void reviewDeptPolicies(Date currentDate, boolean metDeptStaff) {
         if(metDeptStaff) {
             SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
             String fmtDate = sdf.format(currentDate);
             System.out.println("Reviewed Dept. Policies on " + fmtDate);
-            return true;
+            e.setReviewedDeptPolicies(true);
         } else {
             System.out.println("Sorry, you cannot review "
                     + " department policies until you have first met with HR "
                     + "and then with department staff.");
-            return false;
         }
     }
 
     // Assume this must be performed 4th
-    public String moveIntoCubicle(String cubeId, Date currentDate, boolean reviewedDeptPolicies) {
+    public void moveIntoCubicle(String cubeId, Date currentDate, boolean reviewedDeptPolicies) {
         if(reviewedDeptPolicies) {
             SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
             String fmtDate = sdf.format(currentDate);
             System.out.println("Moved into cube on " + fmtDate);
-            return cubeId;
+            e.setCubeId(cubeId);
         } else {
             System.out.println("Sorry, you cannot move in to a "
                     + "cubicle until you have first met with HR "
                     + "and then with department staff, and then reviewed"
                     + "department policies.");
-            return "N/A";
+            e.setCubeId("N/A");
         }
-
     }
 }

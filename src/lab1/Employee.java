@@ -41,12 +41,6 @@ public class Employee {
         
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(currentDate);
-        
-        HRManager mm = new HRManager();
-        this.metWithHr = mm.meetWithHrForBenefitAndSalryInfo(currentDate);
-        this.metDeptStaff = mm.meetDepartmentStaff(currentDate,metWithHr);
-        this.reviewedDeptPolicies = mm.reviewDeptPolicies(currentDate, metDeptStaff);
-        mm.moveIntoCubicle(cubeId, currentDate, reviewedDeptPolicies);
 
         if(metWithHr && metDeptStaff
            && reviewedDeptPolicies && movedIn) {
@@ -117,40 +111,20 @@ public class Employee {
         }
     }
 
-    public boolean getMetWithHr() {
-        return metWithHr;
-    }
-
     public void setMetWithHr(boolean metWithHr) {
         this.metWithHr = metWithHr;
-    }
-
-    public boolean getMetDeptStaff() {
-        return metDeptStaff;
     }
 
     public void setMetDeptStaff(boolean metDeptStaff) {
         this.metDeptStaff = metDeptStaff;
     }
 
-    public boolean getReviewedDeptPolicies() {
-        return reviewedDeptPolicies;
-    }
-
     public void setReviewedDeptPolicies(boolean reviewedDeptPolicies) {
         this.reviewedDeptPolicies = reviewedDeptPolicies;
     }
 
-    public boolean getMovedIn() {
-        return movedIn;
-    }
-
     public void setMovedIn(boolean movedIn) {
         this.movedIn = movedIn;
-    }
-
-    public String getCubeId() {
-        return cubeId;
     }
 
     public void setCubeId(String cubeId) {
