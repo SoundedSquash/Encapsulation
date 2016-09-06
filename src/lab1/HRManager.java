@@ -75,6 +75,7 @@ public class HRManager {
             String fmtDate = sdf.format(currentDate);
             System.out.println("Moved into cube on " + fmtDate);
             e.setCubeId(cubeId);
+            e.setMovedIn(true);
         } else {
             System.out.println("Sorry, you cannot move in to a "
                     + "cubicle until you have first met with HR "
