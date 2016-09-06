@@ -84,16 +84,33 @@ public class Employee {
         return ssn;
     }
 
-    public void setSsn(String ssn) {
-        this.ssn = ssn;
+    public boolean setSsn(String ssn) {
+        if(ssn.matches("([0-9]{3})-([0-9]{2})-([0-9]{4})")){
+            this.ssn = ssn;
+            return true;
+        } else {
+            System.out.println("SSN is not in proper 000-00-0000 format.");
+            return false;
+        }
     }
 
     public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) throws ParseException {
-        SimpleDateFormat stringDate = new SimpleDateFormat("mm/dd/yyyy");
-        this.birthDate = stringDate.parse(birthDate);
+    public boolean setBirthDate(String birthDate) throws ParseException {
+        Date date;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
+            date = sdf.parse(birthDate);
+            if (birthDate.equals(sdf.format(date))) {
+        this.birthDate = date;
+        return true;
+            }
+        } catch (ParseException ex) {
+            System.out.println("Invalid mm/dd/yyyy format.");
+            return false;
+        }
+        return false;
     }
 }
