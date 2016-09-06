@@ -23,6 +23,7 @@ public class Employee {
     private boolean movedIn = false;
     private String cubeId;
     private final Date currentDate;
+    private boolean validEmployee = true;
 
     public Employee(String firstName, String lastName, String ssn, String birthDate) throws ParseException{
         boolean firstNameCheck, lastNameCheck, ssnCheck, birthDateCheck;
@@ -34,7 +35,11 @@ public class Employee {
         
         if(firstNameCheck && lastNameCheck && ssnCheck && birthDateCheck){
             System.out.println("Employee added!");
-        } else System.out.println("Issue(s) occured when adding employee.");
+            validEmployee = true;
+        } else {
+            System.out.println("Issue(s) occured when adding employee.");
+            validEmployee = false;
+        }
     }
 
     public String getStatus() {
@@ -48,6 +53,10 @@ public class Employee {
         } else {
             return fmtDate + ": Orientation in progress...";
         }
+    }
+
+    public boolean isValidEmployee() {
+        return validEmployee;
     }
 
     public String getFirstName() {

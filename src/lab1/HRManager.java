@@ -21,12 +21,14 @@ public class HRManager {
     }
     
     public void orientEmployee(){
-        Date currentDate = e.getCurrentDate();
-        
-        meetWithHrForBenefitAndSalryInfo(currentDate);
-        meetDepartmentStaff(currentDate, e.isMetWithHr());
-        reviewDeptPolicies(currentDate, e.isMetDeptStaff());
-        moveIntoCubicle(e.getCubeId(), currentDate, e.isReviewedDeptPolicies());
+        if(e.isValidEmployee()){
+            Date currentDate = e.getCurrentDate();
+
+            meetWithHrForBenefitAndSalryInfo(currentDate);
+            meetDepartmentStaff(currentDate, e.isMetWithHr());
+            reviewDeptPolicies(currentDate, e.isMetDeptStaff());
+            moveIntoCubicle(e.getCubeId(), currentDate, e.isReviewedDeptPolicies());
+        }
     }
     
     public String getEmployeeStatus(){
