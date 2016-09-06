@@ -20,8 +20,21 @@ public class HRManager {
         e = new Employee(firstName, lastName, ssn, birthDate);
     }
     
+    public void orientEmployee(){
+        Date currentDate = e.getCurrentDate();
+        
+        meetWithHrForBenefitAndSalryInfo(currentDate);
+        meetDepartmentStaff(currentDate, e.isMetWithHr());
+        reviewDeptPolicies(currentDate, e.isMetDeptStaff());
+        moveIntoCubicle(e.getCubeId(), currentDate, e.isReviewedDeptPolicies());
+    }
+    
+    public String getEmployeeStatus(){
+        return e.getStatus();
+    }
+    
     // Assume this must be performed first
-    public void meetWithHrForBenefitAndSalryInfo(Date currentDate) {
+    private void meetWithHrForBenefitAndSalryInfo(Date currentDate) {
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(currentDate);
         System.out.println("Met with Hr on " + fmtDate);
@@ -29,7 +42,7 @@ public class HRManager {
     }
 
     // Assume this is must be performed second
-    public void meetDepartmentStaff(Date currentDate, boolean metWithHr) {
+    private void meetDepartmentStaff(Date currentDate, boolean metWithHr) {
         if(metWithHr) {
             SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
             String fmtDate = sdf.format(currentDate);
@@ -42,7 +55,7 @@ public class HRManager {
     }
 
     // Assume this must be performed third
-    public void reviewDeptPolicies(Date currentDate, boolean metDeptStaff) {
+    private void reviewDeptPolicies(Date currentDate, boolean metDeptStaff) {
         if(metDeptStaff) {
             SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
             String fmtDate = sdf.format(currentDate);
@@ -56,7 +69,7 @@ public class HRManager {
     }
 
     // Assume this must be performed 4th
-    public void moveIntoCubicle(String cubeId, Date currentDate, boolean reviewedDeptPolicies) {
+    private void moveIntoCubicle(String cubeId, Date currentDate, boolean reviewedDeptPolicies) {
         if(reviewedDeptPolicies) {
             SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
             String fmtDate = sdf.format(currentDate);

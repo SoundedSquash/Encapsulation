@@ -23,8 +23,9 @@ public class Startup {
         */
         HRManager hr = new HRManager();
         hr.addEmployee("Peter", "Piper", "333-07-1234", "07/07/1934");
+        hr.orientEmployee();
 
-        System.out.println("The employee's status is: " + employee.getStatus());
+        System.out.println("The employee's status is: " + hr.getEmployeeStatus());
     }
     
     

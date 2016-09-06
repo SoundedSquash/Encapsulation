@@ -111,6 +111,26 @@ public class Employee {
         }
     }
 
+    public boolean isMetWithHr() {
+        return metWithHr;
+    }
+
+    public boolean isMetDeptStaff() {
+        return metDeptStaff;
+    }
+
+    public boolean isReviewedDeptPolicies() {
+        return reviewedDeptPolicies;
+    }
+
+    public boolean isMovedIn() {
+        return movedIn;
+    }
+
+    public String getCubeId() {
+        return cubeId;
+    }
+
     public void setMetWithHr(boolean metWithHr) {
         this.metWithHr = metWithHr;
     }
@@ -130,5 +150,8 @@ public class Employee {
     public void setCubeId(String cubeId) {
         this.cubeId = cubeId;
     }
-    
+
+    public Date getCurrentDate() {
+        return currentDate;
+    }
 }
