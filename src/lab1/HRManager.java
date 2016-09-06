@@ -5,6 +5,7 @@
  */
 package lab1;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -15,8 +16,8 @@ import java.util.Date;
 public class HRManager {
     private Employee e;
     
-    public void addEmployee(String firstName, String lastName, String ssn, String birthDate){
-        
+    public void addEmployee(String firstName, String lastName, String ssn, String birthDate) throws ParseException{
+        e = new Employee(firstName, lastName, ssn, birthDate);
     }
     
     // Assume this must be performed first

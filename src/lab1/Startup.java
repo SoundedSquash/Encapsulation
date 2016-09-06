@@ -1,5 +1,7 @@
 package lab1;
 
+import java.text.ParseException;
+
 /**
  * In this lab your challenge is to fix the code in both classes to use
  * proper encapsulation and the other best practices as explained by 
@@ -9,7 +11,7 @@ package lab1;
  * @version     1.01
  */
 public class Startup {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         /*
             Are we violating SRP (Single Responsibility Principle)?
         
@@ -19,10 +21,8 @@ public class Startup {
             may need to create a new class that talks to Employee. This does
             not have to be a GUI class.
         */
-        
-        employee.setFirstName("Peter");
-        employee.setLastName("Piper");
-        employee.setSsn("333-07-1234");
+        HRManager hr = new HRManager();
+        hr.addEmployee("Peter", "Piper", "333-07-1234", "07/07/1934");
 
         System.out.println("The employee's status is: " + employee.getStatus());
     }

@@ -24,13 +24,17 @@ public class Employee {
     private String cubeId;
     private final Date currentDate;
 
-    public Employee(String firstName, String lastName, String ssn, String birthDate){
+    public Employee(String firstName, String lastName, String ssn, String birthDate) throws ParseException{
         boolean firstNameCheck, lastNameCheck, ssnCheck, birthDateCheck;
         currentDate = new Date();
         firstNameCheck = setFirstName(firstName);
         lastNameCheck = setLastName(lastName);
         ssnCheck = setSsn(ssn);
         birthDateCheck = setBirthDate(birthDate);
+        
+        if(firstNameCheck && lastNameCheck && ssnCheck && birthDateCheck){
+            System.out.println("Employee added!");
+        } else System.out.println("Issue(s) occured when adding employee.");
     }
 
     public String getStatus() {
@@ -70,7 +74,7 @@ public class Employee {
         return lastName;
     }
 
-    public boolean setLastName(String lastName) {
+    public final boolean setLastName(String lastName) {
         if(lastName.length() > 0){
             this.lastName = lastName;
             return true;
@@ -84,7 +88,7 @@ public class Employee {
         return ssn;
     }
 
-    public boolean setSsn(String ssn) {
+    public final boolean setSsn(String ssn) {
         if(ssn.matches("([0-9]{3})-([0-9]{2})-([0-9]{4})")){
             this.ssn = ssn;
             return true;
@@ -98,19 +102,59 @@ public class Employee {
         return birthDate;
     }
 
-    public boolean setBirthDate(String birthDate) throws ParseException {
+    public final boolean setBirthDate(String birthDate) throws ParseException {
         Date date;
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
             date = sdf.parse(birthDate);
             if (birthDate.equals(sdf.format(date))) {
-        this.birthDate = date;
-        return true;
-            }
+                this.birthDate = date;
+                return true;
+            } else return false;
         } catch (ParseException ex) {
             System.out.println("Invalid mm/dd/yyyy format.");
             return false;
         }
-        return false;
     }
+
+    public boolean getMetWithHr() {
+        return metWithHr;
+    }
+
+    public void setMetWithHr(boolean metWithHr) {
+        this.metWithHr = metWithHr;
+    }
+
+    public boolean getMetDeptStaff() {
+        return metDeptStaff;
+    }
+
+    public void setMetDeptStaff(boolean metDeptStaff) {
+        this.metDeptStaff = metDeptStaff;
+    }
+
+    public boolean getReviewedDeptPolicies() {
+        return reviewedDeptPolicies;
+    }
+
+    public void setReviewedDeptPolicies(boolean reviewedDeptPolicies) {
+        this.reviewedDeptPolicies = reviewedDeptPolicies;
+    }
+
+    public boolean getMovedIn() {
+        return movedIn;
+    }
+
+    public void setMovedIn(boolean movedIn) {
+        this.movedIn = movedIn;
+    }
+
+    public String getCubeId() {
+        return cubeId;
+    }
+
+    public void setCubeId(String cubeId) {
+        this.cubeId = cubeId;
+    }
+    
 }
