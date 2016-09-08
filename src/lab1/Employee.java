@@ -41,6 +41,58 @@ public class Employee {
             validEmployee = false;
         }
     }
+    
+    // Assume this must be performed first
+    public void meetWithHrForBenefitAndSalryInfo() {
+        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+        String fmtDate = sdf.format(currentDate);
+        System.out.println("Met with Hr on " + fmtDate);
+        metWithHr = true;
+    }
+
+    // Assume this is must be performed second
+    public void meetDepartmentStaff() {
+        if(metWithHr) {
+            SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+            String fmtDate = sdf.format(currentDate);
+            System.out.println("Met with Dept. Staff on " + fmtDate);
+            metDeptStaff = true;
+        } else {
+            System.out.println("Sorry, you cannot meet with "
+                    + "department staff until you have met with HR.");
+        }
+    }
+
+    // Assume this must be performed third
+    public void reviewDeptPolicies() {
+        if(metDeptStaff) {
+            SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+            String fmtDate = sdf.format(currentDate);
+            System.out.println("Reviewed Dept. Policies on " + fmtDate);
+            reviewedDeptPolicies = true;
+        } else {
+            System.out.println("Sorry, you cannot review "
+                    + " department policies until you have first met with HR "
+                    + "and then with department staff.");
+        }
+    }
+
+    // Assume this must be performed 4th
+    public void moveIntoCubicle() {
+        if(reviewedDeptPolicies) {
+            SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+            String fmtDate = sdf.format(currentDate);
+            System.out.println("Moved into cube on " + fmtDate);
+            this.cubeId = cubeId;
+            movedIn =true;
+        } else {
+            System.out.println("Sorry, you cannot move in to a "
+                    + "cubicle until you have first met with HR "
+                    + "and then with department staff, and then reviewed"
+                    + "department policies.");
+            this.cubeId = "N/A";
+        }
+    }
 
     public String getStatus() {
         
@@ -63,7 +115,7 @@ public class Employee {
         return firstName;
     }
 
-    public final boolean setFirstName(String firstName) {
+    private final boolean setFirstName(String firstName) {
         if(firstName.length() > 0){
             this.firstName = firstName;
             return true;
@@ -77,7 +129,7 @@ public class Employee {
         return lastName;
     }
 
-    public final boolean setLastName(String lastName) {
+    private final boolean setLastName(String lastName) {
         if(lastName.length() > 0){
             this.lastName = lastName;
             return true;
@@ -91,7 +143,7 @@ public class Employee {
         return ssn;
     }
 
-    public final boolean setSsn(String ssn) {
+    private final boolean setSsn(String ssn) {
         if(ssn.matches("([0-9]{3})-([0-9]{2})-([0-9]{4})")){
             this.ssn = ssn;
             return true;
@@ -105,7 +157,7 @@ public class Employee {
         return birthDate;
     }
 
-    public final boolean setBirthDate(String birthDate) throws ParseException {
+    private final boolean setBirthDate(String birthDate) throws ParseException {
         Date date;
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
